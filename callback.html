@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Conexión con TikTok · ClippeadoAI</title><link rel="stylesheet" href="style.css"><meta name="robots" content="noindex"></head>
+<body><div class="wrap">
+<header><div class="logo">C</div><a href="./">ClippeadoAI</a>
+<nav><a href="terminos">Términos</a><a href="privacidad">Privacidad</a></nav></header>
+<main class="card">
+<h1>Conexión con TikTok</h1>
+<p id="status" class="muted">Comprobando…</p>
+<p>Copia esta URL y pégala en la ventana de la app (<code>python -m clipper auth</code>):</p>
+<textarea id="url" readonly></textarea>
+<button id="copy">Copiar URL</button>
+<p class="muted">Esta página no envía ni guarda nada: la URL solo está en tu navegador. / This page does not send or store anything.</p></main>
+<footer class="muted">© 2026 ClippeadoAI · <a href="mailto:gta6clippeadoai@gmail.com">gta6clippeadoai@gmail.com</a></footer>
+</div><script>
+const u=location.href, q=new URLSearchParams(location.search), s=document.getElementById('status');
+document.getElementById('url').value=u;
+if(q.get('code')){s.innerHTML='<span class="ok">✅ TikTok ha dado permiso.</span> Ya casi está.';}
+else if(q.get('error')){s.innerHTML='<span class="bad">❌ Error: '+(q.get('error_description')||q.get('error')).replace(/</g,'&lt;')+'</span>';}
+else{s.textContent='Aquí aparecerá la URL cuando TikTok te redirija.';}
+document.getElementById('copy').onclick=async()=>{const t=document.getElementById('url');t.select();
+try{await navigator.clipboard.writeText(u);}catch(e){document.execCommand('copy');}
+document.getElementById('copy').textContent='¡Copiada! ✅';};
+</script></body></html>
