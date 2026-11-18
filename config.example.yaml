@@ -1,0 +1,65 @@
+# ============================================================
+#  GTA Clipper - configuración
+#  Copia este archivo a config.yaml y edítalo.
+# ============================================================
+
+# Categoría exacta de Twitch. Solo se cogen clips jugando a esto.
+# Para probar ANTES del lanzamiento pon "Grand Theft Auto V", o déjalo vacío ("") para no filtrar.
+game: "Grand Theft Auto VI"
+
+# streamers = solo los streamers de la lista
+# game      = los clips más vistos de GTA VI de TODO Twitch (cualquier streamer)
+mode: streamers
+
+streamers:
+  - login: ibai               # nombre de usuario de twitch.tv/<login>
+    layout: blur              # blur = vídeo entero sobre fondo desenfocado
+  - login: auronplay
+    layout: split             # split = facecam arriba + gameplay abajo
+    facecam: [0.0, 0.0, 0.25, 0.30]   # zona de la cámara: x, y, ancho, alto (fracción de la pantalla)
+  - login: elxokas
+  # - login: otro_streamer
+  #   clips_per_run: 5        # sobrescribe el valor global para este streamer
+
+languages: ["es"]             # idioma del stream; [] = cualquiera
+
+# --- Qué clips cogemos ---
+lookback_hours: 24            # clips creados en las últimas X horas
+min_views: 30                 # mínimo de views del clip en Twitch (= señal de que es bueno)
+min_duration: 8               # segundos
+max_duration: 60
+clips_per_streamer_per_run: 3
+clips_per_run_game_mode: 10
+dedupe_window_seconds: 45     # descarta clips del mismo momento hechos por varios espectadores
+
+# --- Edición ---
+video:
+  layout: blur                # layout por defecto: blur | split
+  crf: 20                     # calidad (menos = mejor, 18-23)
+  preset: veryfast
+
+subtitles:
+  enabled: true
+  model: small                # tiny | base | small | medium | large-v3 (más grande = mejor y más lento)
+  language: es
+  device: auto                # auto | cpu | cuda
+
+# --- TikTok ---
+tiktok:
+  enabled: false              # true = subir a TikTok automáticamente (requiere app de TikTok, ver README)
+  # draft  = (RECOMENDADO) lo manda a tus borradores de TikTok y te llega una notificación.
+  #          Tú pegas el caption (está en output/*.txt) y publicas. Solo necesita el permiso video.upload.
+  # direct = publica directamente. Necesita video.publish y "Direct Post" aprobado por TikTok;
+  #          sin aprobación solo funciona con cuentas privadas.
+  mode: draft
+  privacy_level: SELF_ONLY    # cuando TikTok apruebe tu app: PUBLIC_TO_EVERYONE
+  max_uploads_per_day: 8      # no te pases: TikTok penaliza el spam
+  min_minutes_between_uploads: 60
+  disable_comment: false
+  disable_duet: false
+  disable_stitch: false
+  # Variables: {title} {streamer} {streamer_tag} {views}
+  caption_template: "{title} 😂 | {streamer} #gta6 #gtavi #{streamer_tag} #gaming #fyp"
+
+schedule:
+  fetch_every_minutes: 30

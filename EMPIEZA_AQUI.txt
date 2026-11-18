@@ -1,0 +1,19 @@
+GTA CLIPPER - EMPIEZA AQUI
+==========================
+
+Necesitas tener instalados Python 3.12 (con "Add python.exe to PATH") y FFmpeg.
+No hacen falta claves de Twitch: la app lee los clips publicos de cada canal.
+
+1) Doble clic en 1_INSTALAR.bat
+   - Instala todo y te pregunta que streamers quieres (las claves de Twitch: pulsa Enter para saltarlas).
+
+2) Doble clic en 2_PROBAR.bat
+   - Hace una prueba y te abre la carpeta "output" con los videos editados.
+   - Cada video tiene un .txt con el titulo y los hashtags para copiar.
+
+3) Doble clic en 3_INICIAR_AUTOMATICO.bat
+   - Lo deja funcionando solo. No cierres la ventana negra.
+
+Para cambiar los streamers: CONFIGURAR_DE_NUEVO.bat
+
+Si algo falla, haz una captura de la ventana negra y mandasela a Claude.
